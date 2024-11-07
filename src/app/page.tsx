@@ -1,4 +1,6 @@
+import styles from "./Home.module.scss"
+
 export default function Home() {
-  return <div>Hello World</div>;
+  return <div className={styles.container}>Nothing to show yet...</div>;
 }
 
