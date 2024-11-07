@@ -1,10 +1,45 @@
 .container {
     display: flex;
     justify-content: center;
+    flex-direction: column;
     align-items: center;
     height: 100vh;
     width: 100vw;
     background: black;
     color: white;
     font-size: 20px;
+}
+
+.content {
+    width: 600px;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 100px;
+}
+
+.page-title {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.page-subtitle {
+    font-size: 20px;
+    margin-bottom: 10px;
+    margin-bottom: 100px;
+}
+
+.year-container {
+    margin-bottom: 50px;
+    // font-weight: 200;
+}
+
+.year-title {
+    font-size: 22px;
+    margin-bottom: 10px;
+    font-weight: 300;
+    // border-bottom: 1px solid #ffffff66;
 }
