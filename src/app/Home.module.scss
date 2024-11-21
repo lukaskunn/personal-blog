@@ -1,10 +1,36 @@
 .container {
     display: flex;
     justify-content: center;
+    flex-direction: column;
     align-items: center;
-    height: 100vh;
+    height: fit-content;
+    min-height: 100vh;
     width: 100vw;
     background: black;
     color: white;
     font-size: 20px;
+}
+
+.content {
+    width: 600px;
+    padding: 50px 0;
+}
+
+.page-title {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.page-subtitle {
+    font-size: 20px;
+    margin-bottom: 10px;
+    margin-bottom: 100px;
+}
+
+@media screen and (max-width: 768px) {
+    .content {
+        width: calc(100% - 60px);
+        padding: 0px 30px;
+    }
+    
 }
