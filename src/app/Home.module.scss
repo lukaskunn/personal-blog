@@ -3,7 +3,8 @@
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    height: 100vh;
+    height: fit-content;
+    min-height: 100vh;
     width: 100vw;
     background: black;
     color: white;
@@ -12,13 +13,7 @@
 
 .content {
     width: 600px;
-}
-
-.header {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin-bottom: 100px;
+    padding: 50px 0;
 }
 
 .page-title {
@@ -32,14 +27,10 @@
     margin-bottom: 100px;
 }
 
-.year-container {
-    margin-bottom: 50px;
-    // font-weight: 200;
-}
-
-.year-title {
-    font-size: 22px;
-    margin-bottom: 10px;
-    font-weight: 300;
-    // border-bottom: 1px solid #ffffff66;
+@media screen and (max-width: 768px) {
+    .content {
+        width: calc(100% - 60px);
+        padding: 0px 30px;
+    }
+    
 }

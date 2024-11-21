@@ -1,7 +1,8 @@
 import React from "react";
 import styles from "./Home.module.scss";
 
-import PostCard from "../components/PostCard";
+import BreadCrumb from "@/components/BreadCrumb";
+import PostCardGroup from "@/components/PostCardGroup";
 
 type AllPostsData = {
   year: string;
@@ -19,25 +20,10 @@ export default async function Home() {
   return (
     <div className={styles.container}>
       <div className={styles.content}>
-        <div className={styles.header}>
-          <div className={styles.breadcrumb}>
-            <a className={styles["breadcrumb-link"]} href="https://lucasoliveira.io">@http.lucaso</a> / home /</div>
-        </div>
+        <BreadCrumb />
         <h1 className={styles["page-title"]}>Hi, my name is Lucas</h1>
         <p className={styles["page-subtitle"]}>Welcome to my blog</p>
-        {postsData.map((singleYear) => {
-          const { year, data } = singleYear;
-
-          return (
-            <div key={year} className={styles["year-container"]}>
-              <h3 key={singleYear.year} className={styles["year-title"]}>{singleYear.year}</h3>
-              {data.map((singlePost) => {
-                const { title, date } = singlePost;
-                return <PostCard key={title} title={title} date={date} />;
-              })}
-            </div>
-          );
-        })}
+        <PostCardGroup allPosts={postsData} />
       </div>
     </div>
   );

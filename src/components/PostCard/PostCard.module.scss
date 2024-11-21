@@ -1,6 +1,8 @@
 .container {
     display: flex;
     margin: 0;
+    align-items: center;
+    cursor: de;
 }
 
 .post-title {
@@ -20,6 +22,6 @@
     text-decoration: none !important;
 }
 
-.post-title:hover {
+.container:hover .post-title{
     opacity: 0.4;
 }
