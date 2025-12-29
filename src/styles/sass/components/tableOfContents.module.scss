@@ -1,0 +1,83 @@
+@use "../_references" as *;
+
+.toc {
+  position: sticky;
+  top: $spacing-20;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-6;
+  max-width: 200px;
+
+  @media screen and (max-width: 1024px) {
+    position: relative;
+    top: 0;
+    max-width: 100%;
+    padding: $spacing-8;
+    background-color: $alpha-10;
+    border-radius: $border-radius-sm;
+    margin-bottom: $spacing-16;
+  }
+}
+
+.label {
+  font-family: $primary-text-font;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-light;
+  letter-spacing: $letter-spacing-wider;
+  text-transform: uppercase;
+  color: $alpha-40;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-2;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.item {
+  position: relative;
+  padding-left: $spacing-6;
+  transition: all $transition-base;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 2px;
+    height: 100%;
+    background-color: transparent;
+    transition: background-color $transition-base;
+  }
+
+  &.active {
+    &::before {
+      background-color: $primary-color;
+    }
+
+    .link {
+      color: $primary-color;
+      font-weight: $font-weight-medium;
+    }
+  }
+}
+
+.link {
+  font-family: $primary-text-font;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-light;
+  line-height: $line-height-relaxed;
+  color: $alpha-40;
+  text-decoration: none;
+  transition: color $transition-base;
+  display: block;
+  padding: $spacing-2 0;
+
+  &:hover {
+    color: $primary-color;
+  }
+}
