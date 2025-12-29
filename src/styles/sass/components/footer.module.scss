@@ -1,0 +1,88 @@
+@use "../_references" as *;
+
+.footer {
+  width: 100%;
+  max-width: $container-max-width;
+  padding: $spacing-20 0;
+  margin-top: auto;
+  border-top: 1px solid $alpha-10;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    gap: $spacing-10;
+    text-align: center;
+  }
+}
+
+.copyright {
+  font-family: $primary-text-font;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-light;
+  letter-spacing: $letter-spacing-normal;
+  color: $alpha-40;
+}
+
+.socialNav {
+  display: flex;
+  align-items: center;
+  gap: $spacing-12;
+
+  @media screen and (max-width: 480px) {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: $spacing-8;
+  }
+}
+
+.socialLink,
+.contactLink {
+  font-family: $primary-text-font;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-regular;
+  letter-spacing: $letter-spacing-wider;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: $alpha-40;
+  transition: color 0.3s ease;
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: $primary-color;
+    transition: width 0.3s ease;
+  }
+
+  &:hover {
+    color: $primary-color;
+
+    &::after {
+      width: 100%;
+    }
+  }
+}
+
+.contactLink {
+  color: $primary-color;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+
+  &::after {
+    display: none;
+  }
+
+  &:hover {
+    text-decoration-thickness: 2px;
+  }
+}
