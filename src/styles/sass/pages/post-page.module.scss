@@ -1,0 +1,23 @@
+@use "../_references" as *;
+
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: $container-max-width;
+  flex: 1;
+  padding: 0 $spacing-20;
+
+  @media screen and (max-width: 768px) {
+    padding: 0;
+  }
+}

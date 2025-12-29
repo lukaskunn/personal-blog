@@ -1,0 +1,69 @@
+@use "../_references" as *;
+
+.author {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-4;
+  padding: $spacing-12 0;
+  animation: fadeIn 0.5s ease-out 0.3s backwards;
+}
+
+.label {
+  font-family: $primary-text-font;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-light;
+  letter-spacing: $letter-spacing-wider;
+  text-transform: uppercase;
+  color: $alpha-40;
+}
+
+.info {
+  display: flex;
+  align-items: center;
+  gap: $spacing-6;
+}
+
+.avatarWrapper {
+  width: 40px;
+  height: 40px;
+  border-radius: $border-radius-full;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-1;
+}
+
+.name {
+  font-family: $title-font;
+  font-size: $font-size-base;
+  font-weight: $font-weight-medium;
+  letter-spacing: $letter-spacing-normal;
+  color: $primary-color;
+}
+
+.bio {
+  font-family: $primary-text-font;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-light;
+  color: $alpha-40;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}

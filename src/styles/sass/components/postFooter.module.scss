@@ -1,0 +1,96 @@
+@use "../_references" as *;
+
+.footer {
+  width: 100%;
+  max-width: $container-max-width;
+  padding: $spacing-40 0 $spacing-20;
+  margin-top: auto;
+  border-top: 1px solid $alpha-10;
+}
+
+.cta {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-12;
+  padding-bottom: $spacing-40;
+
+  @media screen and (max-width: 768px) {
+    padding-bottom: $spacing-24;
+  }
+}
+
+.ctaTitle {
+  font-family: $gloock-font;
+  font-size: clamp($font-size-4xl, 8vw, $font-size-8xl);
+  font-weight: $font-weight-regular;
+  line-height: $line-height-tight;
+  letter-spacing: $letter-spacing-tight;
+  margin: 0;
+}
+
+.email {
+  font-family: $primary-text-font;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-light;
+  letter-spacing: $letter-spacing-normal;
+  color: $primary-color;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  transition: all $transition-base;
+
+  &:hover {
+    text-decoration-thickness: 2px;
+  }
+}
+
+.bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: $spacing-12;
+  padding-top: $spacing-12;
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    gap: $spacing-10;
+  }
+}
+
+.socialNav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-8;
+
+  @media screen and (max-width: 480px) {
+    gap: $spacing-6;
+  }
+}
+
+.socialLink {
+  font-family: $primary-text-font;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-light;
+  letter-spacing: $letter-spacing-wider;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: $alpha-40;
+  transition: color $transition-base;
+
+  &:hover {
+    color: $primary-color;
+  }
+}
+
+.copyright {
+  font-family: $primary-text-font;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-light;
+  letter-spacing: $letter-spacing-normal;
+  color: $alpha-40;
+  text-align: right;
+  margin: 0;
+
+  @media screen and (max-width: 768px) {
+    text-align: left;
+  }
+}

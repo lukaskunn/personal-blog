@@ -1,0 +1,1 @@
+.content{display:grid;grid-template-columns:200px 1fr;gap:48px;width:100%;max-width:900px;margin:0 auto;padding:32px 0}@media screen and (max-width: 1024px){.content{grid-template-columns:1fr;gap:0}}@media screen and (max-width: 1024px){.sidebar{order:1}}@media screen and (max-width: 1024px){.article{order:2}}

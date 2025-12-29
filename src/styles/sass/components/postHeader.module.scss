@@ -1,0 +1,113 @@
+@use "../_references" as *;
+
+.header {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: $spacing-20 0;
+  animation: fadeIn 0.6s ease-out;
+
+  @media screen and (max-width: 768px) {
+    padding: $spacing-10 0;
+  }
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: $spacing-6;
+  margin-bottom: $spacing-12;
+  flex-wrap: wrap;
+
+  @media screen and (max-width: 480px) {
+    gap: $spacing-4;
+  }
+}
+
+.date,
+.type,
+.readTime {
+  font-family: $primary-text-font;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-light;
+  letter-spacing: $letter-spacing-wider;
+  text-transform: uppercase;
+  color: $alpha-40;
+}
+
+.separator {
+  font-family: $primary-text-font;
+  font-size: $font-size-xs;
+  color: $alpha-20;
+}
+
+.title {
+  font-family: $gloock-font;
+  font-size: clamp($font-size-4xl, 6vw, $font-size-6xl);
+  font-weight: $font-weight-regular;
+  line-height: $line-height-tight;
+  letter-spacing: $letter-spacing-tight;
+  margin: 0 0 $spacing-20;
+  animation: slideUp 0.5s ease-out 0.1s backwards;
+}
+
+.italic {
+  font-style: italic;
+}
+
+.coverImageWrapper {
+  width: 100%;
+  margin: 0;
+  animation: slideUp 0.5s ease-out 0.2s backwards;
+}
+
+.imageContainer {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: $border-radius-sm;
+  background-color: $alpha-10;
+}
+
+.coverImage {
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.caption {
+  font-family: $primary-text-font;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-light;
+  letter-spacing: $letter-spacing-normal;
+  margin-top: $spacing-4;
+  padding: $spacing-3 $spacing-4;
+  background-color: $primary-color;
+  color: $background-color-main;
+  border-radius: $border-radius-sm;
+  display: block;
+  width: fit-content;
+  margin-left: auto;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

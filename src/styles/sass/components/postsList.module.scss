@@ -1,0 +1,120 @@
+@use "../_references" as *;
+
+.postsSection {
+  width: 100%;
+  max-width: $container-max-width;
+  padding-bottom: $spacing-40;
+}
+
+.filters {
+  display: flex;
+  align-items: center;
+  gap: $spacing-12;
+  padding: $spacing-10 0;
+  margin-bottom: $spacing-8;
+  border-bottom: 1px solid $alpha-10;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  @media screen and (max-width: 768px) {
+    gap: $spacing-8;
+    padding: $spacing-8 0;
+  }
+}
+
+.filterButton {
+  display: flex;
+  align-items: center;
+  gap: $spacing-2;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: $primary-text-font;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-regular;
+  letter-spacing: $letter-spacing-wider;
+  text-transform: uppercase;
+  color: $alpha-40;
+  padding: $spacing-3 0;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: $primary-color;
+    transition: width 0.3s ease;
+  }
+
+  &:hover {
+    color: $primary-color;
+  }
+
+  &.active {
+    color: $primary-color;
+    font-weight: $font-weight-medium;
+
+    &::after {
+      width: 100%;
+    }
+  }
+}
+
+.count {
+  font-weight: $font-weight-light;
+  color: inherit;
+}
+
+.postsList {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.emptyState {
+  font-family: $primary-text-font;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-light;
+  color: $alpha-40;
+  text-align: center;
+  padding: $spacing-40 0;
+}
+
+.loadMore {
+  display: flex;
+  justify-content: center;
+  padding-top: $spacing-24;
+}
+
+.loadMoreButton {
+  background: none;
+  border: 1px solid $primary-color;
+  cursor: pointer;
+  font-family: $primary-text-font;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-regular;
+  letter-spacing: $letter-spacing-wider;
+  text-transform: uppercase;
+  color: $primary-color;
+  padding: $spacing-6 $spacing-12;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: $primary-color;
+    color: $background-color-main;
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+}

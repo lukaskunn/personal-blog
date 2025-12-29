@@ -1,0 +1,28 @@
+@use "../_references" as *;
+
+.content {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: $spacing-24;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: $spacing-16 0;
+
+  @media screen and (max-width: 1024px) {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+}
+
+.sidebar {
+  @media screen and (max-width: 1024px) {
+    order: 1;
+  }
+}
+
+.article {
+  @media screen and (max-width: 1024px) {
+    order: 2;
+  }
+}

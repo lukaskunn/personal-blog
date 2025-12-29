@@ -1,0 +1,83 @@
+@use "../_references" as *;
+
+.nextArticle {
+  width: 100%;
+  padding: $spacing-20 0;
+  border-top: 1px solid $alpha-10;
+  margin-top: $spacing-24;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-6;
+}
+
+.label {
+  font-family: $primary-text-font;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-light;
+  letter-spacing: $letter-spacing-wider;
+  text-transform: uppercase;
+  color: $alpha-40;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $spacing-12;
+  text-decoration: none;
+  color: $primary-color;
+  transition: all $transition-base;
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: $spacing-8;
+  }
+
+  &:hover {
+    .title {
+      transform: translateX(4px);
+    }
+
+    .arrow {
+      transform: translateX(4px);
+    }
+  }
+}
+
+.title {
+  font-family: $gloock-font;
+  font-size: clamp($font-size-xl, 3vw, $font-size-3xl);
+  font-weight: $font-weight-regular;
+  line-height: $line-height-snug;
+  letter-spacing: $letter-spacing-tight;
+  margin: 0;
+  transition: transform $transition-base;
+}
+
+.readMore {
+  display: flex;
+  align-items: center;
+  gap: $spacing-4;
+  font-family: $primary-text-font;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-regular;
+  letter-spacing: $letter-spacing-wider;
+  text-transform: uppercase;
+  white-space: nowrap;
+  padding: $spacing-4 $spacing-8;
+  border: 1px solid $primary-color;
+  transition: all $transition-base;
+
+  &:hover {
+    background-color: $primary-color;
+    color: $background-color-main;
+  }
+}
+
+.arrow {
+  transition: transform $transition-base;
+}

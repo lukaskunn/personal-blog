@@ -1,0 +1,438 @@
+@use "../_references" as *;
+
+.body {
+  width: 100%;
+  max-width: 680px;
+}
+
+// Typography
+.h2 {
+  font-family: $gloock-font;
+  font-size: clamp($font-size-2xl, 3vw, $font-size-3xl);
+  font-weight: $font-weight-regular;
+  line-height: $line-height-snug;
+  letter-spacing: $letter-spacing-tight;
+  margin: $spacing-24 0 $spacing-8;
+  scroll-margin-top: $spacing-20;
+
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+.h3 {
+  font-family: $gloock-font;
+  font-size: clamp($font-size-xl, 2.5vw, $font-size-2xl);
+  font-weight: $font-weight-regular;
+  line-height: $line-height-snug;
+  letter-spacing: $letter-spacing-tight;
+  margin: $spacing-20 0 $spacing-6;
+  scroll-margin-top: $spacing-20;
+}
+
+.h4 {
+  font-family: $title-font;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-medium;
+  line-height: $line-height-snug;
+  margin: $spacing-16 0 $spacing-4;
+  scroll-margin-top: $spacing-20;
+}
+
+.paragraph {
+  font-family: $secondary-text-font;
+  font-size: $font-size-base-16;
+  font-weight: $font-weight-regular;
+  line-height: $line-height-relaxed;
+  color: $alpha-40;
+  margin: 0 0 $spacing-8;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.strong {
+  font-weight: $font-weight-bold;
+  color: $primary-color;
+}
+
+.em {
+  font-style: italic;
+}
+
+.link {
+  color: $primary-color;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: all $transition-base;
+
+  &:hover {
+    text-decoration-thickness: 2px;
+  }
+}
+
+.inlineCode {
+  font-family: $primary-text-font;
+  font-size: 0.9em;
+  background-color: $alpha-10;
+  padding: $spacing-1 $spacing-2;
+  border-radius: $border-radius-sm;
+}
+
+// Lists
+.list,
+.orderedList {
+  font-family: $secondary-text-font;
+  font-size: $font-size-base-16;
+  line-height: $line-height-relaxed;
+  color: $alpha-40;
+  margin: 0 0 $spacing-8;
+  padding-left: $spacing-10;
+}
+
+.orderedList {
+  list-style-type: decimal;
+}
+
+.list {
+  list-style-type: disc;
+}
+
+.listItem {
+  margin-bottom: $spacing-3;
+  padding-left: $spacing-2;
+
+  &::marker {
+    color: $alpha-30;
+  }
+}
+
+// Blockquote
+.blockquote {
+  font-family: $secondary-text-font;
+  font-size: $font-size-lg;
+  font-style: italic;
+  line-height: $line-height-relaxed;
+  color: $alpha-40;
+  margin: $spacing-12 0;
+  padding-left: $spacing-12;
+  border-left: 3px solid $alpha-20;
+}
+
+// Code Block
+.codeBlock {
+  margin: $spacing-12 0;
+  border-radius: $border-radius-sm;
+  overflow: hidden;
+  background-color: $background-color-dark;
+}
+
+.codeHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: $spacing-4 $spacing-8;
+  background-color: $background-color-overlay;
+  border-bottom: 1px solid $alpha-20;
+}
+
+.fileName {
+  font-family: $primary-text-font;
+  font-size: $font-size-xs;
+  color: $background-color-main;
+}
+
+.language {
+  font-family: $primary-text-font;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-light;
+  text-transform: uppercase;
+  letter-spacing: $letter-spacing-wider;
+  color: $alpha-40;
+}
+
+.pre {
+  margin: 0;
+  padding: $spacing-8;
+  overflow-x: auto;
+}
+
+.code {
+  font-family: $primary-text-font;
+  font-size: $font-size-sm;
+  line-height: $line-height-relaxed;
+  color: $background-color-main;
+}
+
+// Image Block
+.imageBlock {
+  margin: $spacing-16 0;
+}
+
+.imageWrapper {
+  position: relative;
+  border-radius: $border-radius-sm;
+  overflow: hidden;
+  background-color: $alpha-10;
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.imageCaption {
+  font-family: $primary-text-font;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-light;
+  color: $alpha-40;
+  text-align: center;
+  margin-top: $spacing-4;
+}
+
+// Quote Block
+.quote {
+  position: relative;
+  margin: $spacing-20 0;
+  padding: $spacing-16 $spacing-12;
+  text-align: center;
+}
+
+.quoteMarkStart,
+.quoteMarkEnd {
+  font-family: $gloock-font;
+  font-size: $font-size-4xl;
+  color: $alpha-20;
+  line-height: 1;
+}
+
+.quoteMarkStart {
+  display: block;
+  margin-bottom: $spacing-4;
+}
+
+.quoteMarkEnd {
+  display: block;
+  margin-top: $spacing-4;
+}
+
+.quoteText {
+  font-family: $gloock-font;
+  font-size: clamp($font-size-lg, 2.5vw, $font-size-2xl);
+  font-weight: $font-weight-regular;
+  line-height: $line-height-normal;
+  margin: 0;
+}
+
+.quoteAuthor {
+  display: block;
+  font-family: $primary-text-font;
+  font-size: $font-size-xs;
+  font-style: normal;
+  font-weight: $font-weight-light;
+  letter-spacing: $letter-spacing-wider;
+  text-transform: uppercase;
+  color: $alpha-40;
+  margin-top: $spacing-8;
+}
+
+// Callout Block
+.callout {
+  margin: $spacing-12 0;
+  padding: $spacing-8;
+  border-radius: $border-radius-sm;
+  border-left: 3px solid $alpha-20;
+  background-color: $alpha-10;
+}
+
+.calloutHeader {
+  display: flex;
+  align-items: center;
+  gap: $spacing-4;
+  margin-bottom: $spacing-4;
+}
+
+.calloutIcon {
+  font-size: $font-size-base-16;
+}
+
+.calloutTitle {
+  font-family: $title-font;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  letter-spacing: $letter-spacing-normal;
+}
+
+.calloutContent {
+  .paragraph {
+    margin-bottom: $spacing-4;
+    font-size: $font-size-sm;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.calloutTip {
+  border-left-color: $success-color;
+  background-color: $success-alpha-10;
+}
+
+.calloutWarning {
+  border-left-color: #f39c12;
+  background-color: rgba(243, 156, 18, 0.1);
+}
+
+.calloutInfo {
+  border-left-color: #3498db;
+  background-color: rgba(52, 152, 219, 0.1);
+}
+
+.calloutError {
+  border-left-color: $error-color;
+  background-color: $error-alpha-10;
+}
+
+.calloutSuccess {
+  border-left-color: $success-color;
+  background-color: $success-alpha-10;
+}
+
+// Embed Block
+.embed {
+  margin: $spacing-16 0;
+}
+
+.embedWrapper {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; // 16:9 aspect ratio
+  background-color: $alpha-10;
+  border-radius: $border-radius-sm;
+  overflow: hidden;
+}
+
+.embedIframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.embedCaption {
+  font-family: $primary-text-font;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-light;
+  color: $alpha-40;
+  text-align: center;
+  margin-top: $spacing-4;
+}
+
+// Divider Block
+.divider {
+  margin: $spacing-20 0;
+  border: none;
+}
+
+.dividerSolid {
+  height: 1px;
+  background-color: $alpha-10;
+}
+
+.dividerDashed {
+  height: 1px;
+  background-image: linear-gradient(to right, $alpha-20 50%, transparent 50%);
+  background-size: 10px 1px;
+}
+
+.dividerDotted {
+  height: 1px;
+  background-image: linear-gradient(to right, $alpha-20 20%, transparent 20%);
+  background-size: 5px 1px;
+}
+
+.dividerStars {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: $primary-text-font;
+  font-size: $font-size-sm;
+  letter-spacing: $letter-spacing-mega;
+  color: $alpha-30;
+}
+
+.dividerSpacing {
+  height: $spacing-20;
+}
+
+// Related Links Block
+.relatedLinks {
+  margin: $spacing-16 0;
+  padding: $spacing-12;
+  background-color: $alpha-10;
+  border-radius: $border-radius-sm;
+}
+
+.relatedLinksTitle {
+  font-family: $title-font;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  letter-spacing: $letter-spacing-normal;
+  text-transform: uppercase;
+  margin: 0 0 $spacing-8;
+}
+
+.relatedLinksList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.relatedLinkItem {
+  padding: $spacing-4 0;
+  border-bottom: 1px solid $alpha-10;
+
+  &:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+}
+
+.relatedLink {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-decoration: none;
+  color: $primary-color;
+  transition: all $transition-base;
+
+  &:hover {
+    .relatedLinkArrow {
+      transform: translate(2px, -2px);
+    }
+  }
+}
+
+.relatedLinkText {
+  font-family: $primary-text-font;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-regular;
+}
+
+.relatedLinkArrow {
+  font-size: $font-size-sm;
+  transition: transform $transition-base;
+}
+
+.relatedLinkDescription {
+  font-family: $primary-text-font;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-light;
+  color: $alpha-40;
+  margin: $spacing-2 0 0;
+}
