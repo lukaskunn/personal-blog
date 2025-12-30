@@ -17,7 +17,15 @@
   flex: 1;
   padding: 0 $spacing-20;
 
+  
   @media screen and (max-width: 768px) {
     padding: 0;
+  }
+
+  .page-breaker {
+    width: 100%;
+    height: 1px;
+    margin: $spacing-20 0;
+    background-color: $alpha-10;
   }
 }
