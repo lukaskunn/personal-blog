@@ -31,8 +31,6 @@ function formatPostType(type: Post["postType"]): string {
 export default function PostHeader({ post }: PostHeaderProps) {
   const formattedDate = formatDate(post.publishedAt);
 
-  console.log(post)
-
   return (
     <header className={styles.header}>
       <div className={styles.meta}>

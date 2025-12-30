@@ -17,6 +17,7 @@ export default async function PostPage({ params }: Props) {
 
   const post = await getPostBySlug(slug);
 
+  // Call notFound() early before any component rendering
   if (!post) {
     notFound();
   }

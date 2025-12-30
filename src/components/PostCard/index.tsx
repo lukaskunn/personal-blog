@@ -33,8 +33,6 @@ export default function PostCard({ post, index }: PostCardProps) {
   const formattedIndex = String(index + 1).padStart(2, "0");
   const formattedDate = formatDate(post.publishedAt);
 
-  console.log(post)
-
   return (
     <article
       className={styles.card}

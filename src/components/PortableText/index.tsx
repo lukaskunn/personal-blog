@@ -125,7 +125,7 @@ function QuoteBlock({ value }: { value: QuoteBlockValue }) {
 
 
 function CalloutBlock({ value }: { value: CalloutBlockValue }) {
-  const toneIcons: Record<CalloutBlockValue["tone"], JSX.Element> = {
+  const toneIcons: Record<CalloutBlockValue["tone"], React.JSX.Element> = {
     tip: <FaLightbulb />,
     warning: <GoAlertFill />,
     info: <FaCircleInfo />,
