@@ -9,11 +9,11 @@ export default function Header() {
       <div className={styles.container}>
         <Link href="/" className={styles.logo}>
           <span className={styles.name}>Lucas Oliveira</span>
-          <span className={styles.role}>Creative Developer & Engineer</span>
+          <span className={styles.role}>Creative Developer & Software Engineer</span>
         </Link>
 
         <nav className={styles.nav}>
-          <Link href="/contact" className={styles.contactLink}>
+          <Link href="https://lucasoliveira.io/contact" className={styles.contactLink}>
             Contact Me
             <span className={styles.arrow}>↗</span>
           </Link>

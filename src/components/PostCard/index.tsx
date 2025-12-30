@@ -33,6 +33,8 @@ export default function PostCard({ post, index }: PostCardProps) {
   const formattedIndex = String(index + 1).padStart(2, "0");
   const formattedDate = formatDate(post.publishedAt);
 
+  console.log(post)
+
   return (
     <article
       className={styles.card}
@@ -49,7 +51,7 @@ export default function PostCard({ post, index }: PostCardProps) {
 
         <div className={styles.content}>
           <h2 className={styles.title}>{post.title}</h2>
-          <p className={styles.excerpt}>{post.excerpt}</p>
+          <p className={styles.excerpt}>{post.subtitle}</p>
         </div>
 
         <div className={styles.typeWrapper}>

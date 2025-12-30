@@ -1,7 +1,14 @@
+import React from "react";
 import { PortableText, PortableTextComponents } from "@portabletext/react";
 import Image from "next/image";
 import { urlFor } from "@/sanity/client";
 import styles from "@/styles/css/components/portableText.module.css";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { dracula } from "react-syntax-highlighter/dist/cjs/styles/prism";
+import { GoAlertFill } from "react-icons/go";
+import { FaCircleInfo, FaCheck, FaLightbulb } from "react-icons/fa6";
+import { FaTimes } from "react-icons/fa";
+
 
 // Block type definitions
 interface CodeBlockValue {
@@ -65,11 +72,20 @@ function CodeBlock({ value }: { value: CodeBlockValue }) {
           <span className={styles.language}>{value.language}</span>
         </div>
       )}
-      <pre className={styles.pre}>
-        <code className={`${styles.code} language-${value.language}`}>
-          {value.code}
-        </code>
-      </pre>
+      <SyntaxHighlighter
+        language={value.language}
+        style={dracula}
+        customStyle={{
+          margin: 0,
+          borderRadius: value.fileName ? '0 0 6px 6px' : '6px',
+          fontSize: '14px',
+        }}
+        showLineNumbers
+        wrapLongLines
+        wrapLines
+      >
+        {value.code}
+      </SyntaxHighlighter>
     </div>
   );
 }
@@ -106,19 +122,29 @@ function QuoteBlock({ value }: { value: QuoteBlockValue }) {
   );
 }
 
+
+
 function CalloutBlock({ value }: { value: CalloutBlockValue }) {
-  const toneIcons: Record<CalloutBlockValue["tone"], string> = {
-    tip: "💡",
-    warning: "⚠️",
-    info: "ℹ️",
-    error: "❌",
-    success: "✅",
+  const toneIcons: Record<CalloutBlockValue["tone"], JSX.Element> = {
+    tip: <FaLightbulb />,
+    warning: <GoAlertFill />,
+    info: <FaCircleInfo />,
+    error: <FaTimes />,
+    success: <FaCheck />,
+  };
+
+  const iconColors: Record<CalloutBlockValue["tone"], string> = {
+    tip: "#27ae60",
+    warning: "#f39c12",
+    info: "#3498db",
+    error: "#e74c3c",
+    success: "#27ae60",
   };
 
   return (
     <div className={`${styles.callout} ${styles[`callout${value.tone.charAt(0).toUpperCase() + value.tone.slice(1)}`]}`}>
       <div className={styles.calloutHeader}>
-        <span className={styles.calloutIcon}>{toneIcons[value.tone]}</span>
+        <span className={styles.calloutIcon} style={{ color: iconColors[value.tone] }}>{toneIcons[value.tone]}</span>
         <span className={styles.calloutTitle}>{value.title}</span>
       </div>
       <div className={styles.calloutContent}>

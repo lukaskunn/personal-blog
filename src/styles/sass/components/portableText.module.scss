@@ -126,6 +126,10 @@
   border-radius: $border-radius-sm;
   overflow: hidden;
   background-color: $background-color-dark;
+
+  @include respond-to(mobile-768) {
+    width: 90vw;
+  }
 }
 
 .codeHeader {

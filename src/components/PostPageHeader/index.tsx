@@ -26,7 +26,7 @@ export default function PostPageHeader() {
           ))}
         </nav>
 
-        <Link href="/contact" className={styles.contactLink}>
+        <Link href="https://lucasoliveira.io/contact" className={styles.contactLink}>
           Contact Me
           <span className={styles.arrow}>↗</span>
         </Link>

@@ -59,6 +59,7 @@
   width: 100%;
   margin: 0;
   animation: slideUp 0.5s ease-out 0.2s backwards;
+  position: relative;
 }
 
 .imageContainer {
@@ -68,6 +69,7 @@
   overflow: hidden;
   border-radius: $border-radius-sm;
   background-color: $alpha-10;
+
 }
 
 .coverImage {
@@ -88,6 +90,9 @@
   display: block;
   width: fit-content;
   margin-left: auto;
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
 }
 
 @keyframes fadeIn {

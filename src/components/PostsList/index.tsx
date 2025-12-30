@@ -23,16 +23,32 @@ const filters: { label: string; value: FilterType }[] = [
 
 export default function PostsList({ posts, totalPosts }: PostsListProps) {
   const [activeFilter, setActiveFilter] = useState<FilterType>("all");
+  const [showArchives, setShowArchives] = useState(false);
 
   const filteredPosts = useMemo(() => {
-    if (activeFilter === "all") {
-      return posts;
-    }
-    return posts.filter((post) => post.postType === activeFilter);
-  }, [posts, activeFilter]);
+    // Filter by status first
+    const statusFiltered = posts.filter((post) => {
+      if (showArchives) {
+        return post.status === "published" || post.status === "archived";
+      }
+      return post.status === "published";
+    });
 
-  const displayCount =
-    activeFilter === "all" ? totalPosts : filteredPosts.length;
+    // Then filter by post type
+    if (activeFilter === "all") {
+      return statusFiltered;
+    }
+    return statusFiltered.filter((post) => post.postType === activeFilter);
+  }, [posts, activeFilter, showArchives]);
+
+  const displayTotalPosts = useMemo(() => {
+    return posts.filter((post) => {
+      if (showArchives) {
+        return post.status === "published" || post.status === "archived";
+      }
+      return post.status === "published";
+    }).length;
+  }, [posts, showArchives]);
 
   return (
     <section className={styles.postsSection}>
@@ -47,7 +63,7 @@ export default function PostsList({ posts, totalPosts }: PostsListProps) {
           >
             {filter.label}
             {filter.value === "all" && (
-              <span className={styles.count}>({displayCount})</span>
+              <span className={styles.count}>({displayTotalPosts})</span>
             )}
           </button>
         ))}
@@ -67,7 +83,12 @@ export default function PostsList({ posts, totalPosts }: PostsListProps) {
 
       {posts.length > 0 && (
         <div className={styles.loadMore}>
-          <button className={styles.loadMoreButton}>Load Archives</button>
+          <button
+            className={styles.loadMoreButton}
+            onClick={() => setShowArchives(!showArchives)}
+          >
+            {showArchives ? "Hide Archives" : "Load Archives"}
+          </button>
         </div>
       )}
     </section>

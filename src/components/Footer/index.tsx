@@ -2,10 +2,10 @@ import Link from "next/link";
 import styles from "@/styles/css/components/footer.module.css";
 
 const socialLinks = [
-  { name: "Twitter", href: "https://twitter.com" },
-  { name: "GitHub", href: "https://github.com" },
-  { name: "LinkedIn", href: "https://linkedin.com" },
-  { name: "Instagram", href: "https://instagram.com" },
+  { name: "Twitter", href: "https://x.com/http_lucaso" },
+  { name: "GitHub", href: "https://github.com/lukaskunn" },
+  { name: "LinkedIn", href: "https://www.linkedin.com/in/lucas-oliveira-io/" },
+  { name: "Instagram", href: "https://www.instagram.com/http.lucaso/" },
 ];
 
 export default function Footer() {
@@ -30,7 +30,7 @@ export default function Footer() {
               {link.name}
             </Link>
           ))}
-          <Link href="/contact" className={styles.contactLink}>
+          <Link href="https://lucasoliveira.io/contact" className={styles.contactLink}>
             Contact
           </Link>
         </nav>

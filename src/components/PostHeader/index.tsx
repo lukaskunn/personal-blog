@@ -31,6 +31,8 @@ function formatPostType(type: Post["postType"]): string {
 export default function PostHeader({ post }: PostHeaderProps) {
   const formattedDate = formatDate(post.publishedAt);
 
+  console.log(post)
+
   return (
     <header className={styles.header}>
       <div className={styles.meta}>
@@ -75,9 +77,9 @@ export default function PostHeader({ post }: PostHeaderProps) {
               blurDataURL={post.coverImageLqip}
             />
           </div>
-          {post.coverImageAlt && (
+          {post.coverImageCaption && (
             <figcaption className={styles.caption}>
-              Image: {post.coverImageAlt}
+              {post.coverImageCaption}
             </figcaption>
           )}
         </figure>

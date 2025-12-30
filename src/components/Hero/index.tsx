@@ -6,17 +6,15 @@ interface HeroProps {
 }
 
 export default function Hero({
-  title = "WRITING",
-  subtitle = "Exploring the intersection of creative development, design systems, and the future of web interfaces.",
+  title = "Welcome to my blog",
+  subtitle = "Im Lucas Oliveira, a <strong>Creative developer and software Engineer</strong>. Here im exploring the intersection of creative development, design systems, and the future of web interfaces.",
 }: HeroProps) {
   return (
     <section className={styles.hero}>
       <h1 className={styles.title}>
-        <span className={styles.titleRegular}>{title.slice(0, 2)}</span>
-        <span className={styles.titleItalic}>{title.slice(2, 4)}</span>
-        <span className={styles.titleRegular}>{title.slice(4)}</span>
+        {title}
       </h1>
-      <p className={styles.subtitle}>{subtitle}</p>
+      <p className={styles.subtitle} dangerouslySetInnerHTML={{ __html: subtitle }} />
     </section>
   );
 }
