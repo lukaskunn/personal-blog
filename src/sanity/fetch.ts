@@ -8,7 +8,7 @@ import {
   nextPostQuery,
   prevPostQuery,
   type Post
-} from '../sanity-queries'
+} from '@/sanity/sanity-queries'
 
 // Type for navigation posts
 export interface NavPost {

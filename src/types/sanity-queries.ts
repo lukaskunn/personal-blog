@@ -11,14 +11,16 @@ export interface Post {
   _id: string
   _createdAt: string
   title: string
+  subtitle: string
+  status: 'draft' | 'published' | 'archived'
   slug: string
   publishedAt: string
   postType: 'engineering' | 'development' | 'design' | 'case-study' | 'personal'
   timeToRead: number
   coverImage: string
-  coverImageAlt?: string
+  coverImageAlt: string
+  coverImageCaption?: string
   coverImageLqip?: string
   author: Author
   body?: any[] // Portable Text content
-  excerpt?: string
 }

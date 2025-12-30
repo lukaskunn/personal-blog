@@ -14,12 +14,15 @@ export const postsQuery = groq`*[_type == "post"] | order(publishedAt desc) [$st
   _id,
   _createdAt,
   title,
+  subtitle,
+  status,
   "slug": slug.current,
   publishedAt,
   postType,
   timeToRead,
   "coverImage": coverImage.asset->url,
-  "coverImageAlt": coverImage.alt,
+  "coverImageAlt": coverImageAlt,
+  "coverImageCaption": coverImageCaption,
   "coverImageLqip": coverImage.asset->metadata.lqip,
   "author": author->{
     _id,
@@ -27,8 +30,7 @@ export const postsQuery = groq`*[_type == "post"] | order(publishedAt desc) [$st
     email,
     bio,
     "avatar": avatar.asset->url
-  },
-  "excerpt": array::join(string::split((pt::text(body)), "")[0..200], "") + "..."
+  }
 }`
 
 /**
@@ -46,7 +48,8 @@ export const postBySlugQuery = groq`*[_type == "post" && slug.current == $slug][
   postType,
   timeToRead,
   "coverImage": coverImage.asset->url,
-  "coverImageAlt": coverImage.alt,
+  "coverImageAlt": coverImageAlt,
+  "coverImageCaption": coverImageCaption,
   "coverImageLqip": coverImage.asset->metadata.lqip,
   "author": author->{
     _id,
