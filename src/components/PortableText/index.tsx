@@ -1,236 +1,13 @@
 import React from "react";
 import { PortableText, PortableTextComponents } from "@portabletext/react";
-import Image from "next/image";
-import { urlFor } from "@/sanity/client";
 import styles from "@/styles/css/components/portableText.module.css";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { dracula } from "react-syntax-highlighter/dist/cjs/styles/prism";
-import { GoAlertFill } from "react-icons/go";
-import { FaCircleInfo, FaCheck, FaLightbulb } from "react-icons/fa6";
-import { FaTimes } from "react-icons/fa";
-
-
-// Block type definitions
-interface CodeBlockValue {
-  _type: "codeBlock";
-  fileName?: string;
-  language: string;
-  code: string;
-  highlightedLines?: string;
-}
-
-interface ImageBlockValue {
-  _type: "imageBlock";
-  image: any;
-  alt?: string;
-}
-
-interface QuoteBlockValue {
-  _type: "quoteBlock";
-  text: string;
-  author?: string;
-}
-
-interface CalloutBlockValue {
-  _type: "calloutBlock";
-  tone: "tip" | "warning" | "info" | "error" | "success";
-  title: string;
-  content: any[];
-}
-
-interface EmbedBlockValue {
-  _type: "embedBlock";
-  provider: "youtube" | "codesandbox" | "twitter" | "vimeo" | "codepen" | "figma" | "other";
-  url: string;
-  caption?: string;
-}
-
-interface DividerBlockValue {
-  _type: "dividerBlock";
-  style: "solid" | "dashed" | "dotted" | "stars" | "spacing";
-}
-
-interface RelatedLink {
-  title: string;
-  url: string;
-  description?: string;
-}
-
-interface RelatedLinksBlockValue {
-  _type: "relatedLinksBlock";
-  title?: string;
-  links: RelatedLink[];
-}
-
-// Component implementations
-function CodeBlock({ value }: { value: CodeBlockValue }) {
-  return (
-    <div className={styles.codeBlock}>
-      {value.fileName && (
-        <div className={styles.codeHeader}>
-          <span className={styles.fileName}>{value.fileName}</span>
-          <span className={styles.language}>{value.language}</span>
-        </div>
-      )}
-      <SyntaxHighlighter
-        language={value.language}
-        style={dracula}
-        customStyle={{
-          margin: 0,
-          borderRadius: value.fileName ? '0 0 6px 6px' : '6px',
-          fontSize: '14px',
-        }}
-        showLineNumbers
-        wrapLongLines
-        wrapLines
-      >
-        {value.code}
-      </SyntaxHighlighter>
-    </div>
-  );
-}
-
-function ImageBlock({ value }: { value: ImageBlockValue }) {
-  if (!value.image) return null;
-
-  return (
-    <figure className={styles.imageBlock}>
-      <div className={styles.imageWrapper}>
-        <Image
-          src={urlFor(value.image).width(800).url()}
-          alt={value.alt || ""}
-          width={800}
-          height={450}
-          className={styles.image}
-        />
-      </div>
-      {value.alt && (
-        <figcaption className={styles.imageCaption}>{value.alt}</figcaption>
-      )}
-    </figure>
-  );
-}
-
-function QuoteBlock({ value }: { value: QuoteBlockValue }) {
-  return (
-    <blockquote className={styles.quote}>
-      <span className={styles.quoteMarkStart}>&ldquo;</span>
-      <p className={styles.quoteText}>{value.text}</p>
-      <span className={styles.quoteMarkEnd}>&rdquo;</span>
-      {value.author && <cite className={styles.quoteAuthor}>— {value.author}</cite>}
-    </blockquote>
-  );
-}
-
-
-
-function CalloutBlock({ value }: { value: CalloutBlockValue }) {
-  const toneIcons: Record<CalloutBlockValue["tone"], React.JSX.Element> = {
-    tip: <FaLightbulb />,
-    warning: <GoAlertFill />,
-    info: <FaCircleInfo />,
-    error: <FaTimes />,
-    success: <FaCheck />,
-  };
-
-  const iconColors: Record<CalloutBlockValue["tone"], string> = {
-    tip: "#27ae60",
-    warning: "#f39c12",
-    info: "#3498db",
-    error: "#e74c3c",
-    success: "#27ae60",
-  };
-
-  return (
-    <div className={`${styles.callout} ${styles[`callout${value.tone.charAt(0).toUpperCase() + value.tone.slice(1)}`]}`}>
-      <div className={styles.calloutHeader}>
-        <span className={styles.calloutIcon} style={{ color: iconColors[value.tone] }}>{toneIcons[value.tone]}</span>
-        <span className={styles.calloutTitle}>{value.title}</span>
-      </div>
-      <div className={styles.calloutContent}>
-        <PortableText value={value.content} components={portableTextComponents} />
-      </div>
-    </div>
-  );
-}
-
-function EmbedBlock({ value }: { value: EmbedBlockValue }) {
-  const getEmbedUrl = (url: string, provider: string): string => {
-    if (provider === "youtube") {
-      const videoId = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&]+)/)?.[1];
-      return `https://www.youtube.com/embed/${videoId}`;
-    }
-    if (provider === "vimeo") {
-      const videoId = url.match(/vimeo\.com\/(\d+)/)?.[1];
-      return `https://player.vimeo.com/video/${videoId}`;
-    }
-    return url;
-  };
-
-  return (
-    <figure className={styles.embed}>
-      <div className={styles.embedWrapper}>
-        <iframe
-          src={getEmbedUrl(value.url, value.provider)}
-          title={value.caption || `${value.provider} embed`}
-          allowFullScreen
-          className={styles.embedIframe}
-        />
-      </div>
-      {value.caption && (
-        <figcaption className={styles.embedCaption}>{value.caption}</figcaption>
-      )}
-    </figure>
-  );
-}
-
-function DividerBlock({ value }: { value: DividerBlockValue }) {
-  const styleMap: Record<DividerBlockValue["style"], string> = {
-    solid: styles.dividerSolid,
-    dashed: styles.dividerDashed,
-    dotted: styles.dividerDotted,
-    stars: styles.dividerStars,
-    spacing: styles.dividerSpacing,
-  };
-
-  if (value.style === "stars") {
-    return (
-      <div className={`${styles.divider} ${styleMap[value.style]}`}>
-        <span>* * *</span>
-      </div>
-    );
-  }
-
-  return <hr className={`${styles.divider} ${styleMap[value.style || "solid"]}`} />;
-}
-
-function RelatedLinksBlock({ value }: { value: RelatedLinksBlockValue }) {
-  return (
-    <aside className={styles.relatedLinks}>
-      <h4 className={styles.relatedLinksTitle}>
-        {value.title || "Related Resources"}
-      </h4>
-      <ul className={styles.relatedLinksList}>
-        {value.links.map((link, index) => (
-          <li key={index} className={styles.relatedLinkItem}>
-            <a
-              href={link.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.relatedLink}
-            >
-              <span className={styles.relatedLinkText}>{link.title}</span>
-              <span className={styles.relatedLinkArrow}>↗</span>
-            </a>
-            {link.description && (
-              <p className={styles.relatedLinkDescription}>{link.description}</p>
-            )}
-          </li>
-        ))}
-      </ul>
-    </aside>
-  );
-}
+import { CodeBlock } from "./CodeBlock";
+import { ImageBlock } from "./ImageBlock";
+import { QuoteBlock } from "./QuoteBlock";
+import { CalloutBlock } from "./CalloutBlock";
+import { EmbedBlock } from "./EmbedBlock";
+import { DividerBlock } from "./DividerBlock";
+import { RelatedLinksBlock } from "./RelatedLinksBlock";
 
 // Portable Text Components configuration
 const portableTextComponents: PortableTextComponents = {
@@ -238,7 +15,7 @@ const portableTextComponents: PortableTextComponents = {
     codeBlock: ({ value }) => <CodeBlock value={value} />,
     imageBlock: ({ value }) => <ImageBlock value={value} />,
     quoteBlock: ({ value }) => <QuoteBlock value={value} />,
-    calloutBlock: ({ value }) => <CalloutBlock value={value} />,
+    calloutBlock: ({ value }) => <CalloutBlock value={value} components={portableTextComponents} />,
     embedBlock: ({ value }) => <EmbedBlock value={value} />,
     dividerBlock: ({ value }) => <DividerBlock value={value} />,
     relatedLinksBlock: ({ value }) => <RelatedLinksBlock value={value} />,
@@ -314,5 +91,14 @@ export function PostBody({ value }: PostBodyProps) {
     </div>
   );
 }
+
+// Export individual components
+export { CodeBlock };
+export { ImageBlock };
+export { QuoteBlock };
+export { CalloutBlock };
+export { EmbedBlock };
+export { DividerBlock };
+export { RelatedLinksBlock };
 
 export default PostBody;
