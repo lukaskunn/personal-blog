@@ -16,6 +16,11 @@ interface TableOfContentsProps {
 export default function TableOfContents({ headings }: TableOfContentsProps) {
   const [activeId, setActiveId] = useState<string>("");
 
+  const cleanHeadingText = (text: string): string => {
+    // Remove leading numbers followed by dot, parenthesis, or dash (e.g., "1. ", "2) ", "3- ")
+    return text.replace(/^\d+[.).\-\s]+/, '').trim();
+  };
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -65,13 +70,14 @@ export default function TableOfContents({ headings }: TableOfContentsProps) {
             key={heading.id}
             className={`${styles.item} ${activeId === heading.id ? styles.active : ""
               }`}
+            data-level={heading.level}
           >
             <a
               href={`#${heading.id}`}
               className={styles.link}
               onClick={(e) => handleClick(e, heading.id)}
             >
-              {heading.text}
+              {cleanHeadingText(heading.text)}
             </a>
           </li>
         ))}
