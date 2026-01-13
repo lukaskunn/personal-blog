@@ -122,7 +122,7 @@ export const relatedPostsQuery = groq`*[_type == "post" && postType == $postType
  * @param publishedAt - Current post's publish date
  * @param slug - Current post slug to exclude
  */
-export const nextPostQuery = groq`*[_type == "post" && publishedAt < $publishedAt && slug.current != $slug] | order(publishedAt desc) [0] {
+export const nextPostQuery = groq`*[_type == "post" && publishedAt < $publishedAt && slug.current != $slug && status != "draft" && status != "archived"] | order(publishedAt desc) [0] {
   _id,
   title,
   "slug": slug.current,
@@ -136,7 +136,7 @@ export const nextPostQuery = groq`*[_type == "post" && publishedAt < $publishedA
  * @param publishedAt - Current post's publish date
  * @param slug - Current post slug to exclude
  */
-export const prevPostQuery = groq`*[_type == "post" && publishedAt > $publishedAt && slug.current != $slug] | order(publishedAt asc) [0] {
+export const prevPostQuery = groq`*[_type == "post" && publishedAt > $publishedAt && slug.current != $slug && status != "draft" && status != "archived"] | order(publishedAt asc) [0] {
   _id,
   title,
   "slug": slug.current,
