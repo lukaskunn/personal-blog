@@ -18,15 +18,15 @@ export function CodeBlock({ value }: { value: CodeBlockValue }) {
 
   const highlightedLines = value.highlightedLines
     ? value.highlightedLines
-        .split(",")
-        .map((range) => {
-          const [start, end] = range.split("-").map(Number);
-          if (end) {
-            return Array.from({ length: end - start + 1 }, (_, i) => start + i);
-          }
-          return [start];
-        })
-        .flat()
+      .split(",")
+      .map((range) => {
+        const [start, end] = range.split("-").map(Number);
+        if (end) {
+          return Array.from({ length: end - start + 1 }, (_, i) => start + i);
+        }
+        return [start];
+      })
+      .flat()
     : [];
 
   const handleCopy = async () => {
@@ -39,13 +39,15 @@ export function CodeBlock({ value }: { value: CodeBlockValue }) {
     <div className={styles.codeBlock}>
       {value.fileName && (
         <div className={styles.codeHeader}>
-          <span className={styles.fileName}>{value.fileName}</span>
-          <span className={styles.language}>{value.language}</span>
-          <button onClick={handleCopy} className={styles.copyButton}>
-            <FaRegCopy /> {copied ? 'Copied!' : 'Copy'}
-          </button>
+          <div className={styles.fileInfo}>
+            <span className={styles.fileName}>{value.fileName}</span>
+            <span className={styles.language}>{value.language}</span>
+          </div>
         </div>
       )}
+      <button onClick={handleCopy} className={styles.copyButton}>
+        <FaRegCopy /> {copied ? 'Copied!' : 'Copy'}
+      </button>
       <SyntaxHighlighter
         language={value.language}
         style={dracula}
@@ -55,7 +57,7 @@ export function CodeBlock({ value }: { value: CodeBlockValue }) {
           fontSize: '14px',
         }}
         lineProps={(lineNumber) => {
-          const style: React.CSSProperties = {display: "block", background: highlightedLines.includes(lineNumber) ? "#44475A" : "transparent"};
+          const style: React.CSSProperties = { display: "block", background: highlightedLines.includes(lineNumber) ? "#44475A" : "transparent" };
 
           return { style };
         }}

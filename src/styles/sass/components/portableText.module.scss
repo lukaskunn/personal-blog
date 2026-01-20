@@ -126,6 +126,7 @@
   border-radius: $border-radius-sm;
   overflow: hidden;
   background-color: $background-color-dark;
+  position: relative;
 
   @include respond-to(mobile-768) {
     width: 90vw;
@@ -172,6 +173,10 @@
   font-weight: $font-weight-medium;
   cursor: pointer;
   transition: all $transition-base;
+  position: absolute;
+  top: 12px;
+  right: 12px;
+
 
   &:hover {
     background-color: rgba(189, 147, 249, 0.2);
