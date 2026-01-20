@@ -7,11 +7,33 @@
   flex-direction: column;
   gap: $spacing-6;
   max-width: 200px;
+  max-height: calc(100vh - $spacing-20 - $spacing-20); // Account for top position and bottom margin
+  overflow-y: auto;
+
+  // Optional: Custom scrollbar styling
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $alpha-20;
+    border-radius: 2px;
+
+    &:hover {
+      background: $alpha-30;
+    }
+  }
 
   @media screen and (max-width: 1024px) {
     position: relative;
     top: 0;
     max-width: 100%;
+    max-height: none; // Remove height constraint on tablet
+    overflow-y: visible;
     padding: $spacing-8;
     background-color: $alpha-10;
     border-radius: $border-radius-sm;
