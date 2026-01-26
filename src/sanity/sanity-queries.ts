@@ -10,7 +10,7 @@ export type { Post, Author } from '@/types/sanity-queries'
  * @param end - Ending index for pagination (default: 10)
  * @returns Array of posts with author information
  */
-export const postsQuery = groq`*[_type == "post"] | order(publishedAt desc) [$start...$end] {
+export const postsQuery = groq`*[_type == "post" && (status == "published" || status == "archived")] | order(publishedAt desc) [$start...$end] {
   _id,
   _createdAt,
   title,
@@ -65,7 +65,7 @@ export const postBySlugQuery = groq`*[_type == "post" && slug.current == $slug][
  * Query to get total count of posts
  * Useful for pagination
  */
-export const postsCountQuery = groq`count(*[_type == "post"])`
+export const postsCountQuery = groq`count(*[_type == "post" && (status == "published" || status == "archived")])`
 
 /**
  * Query to get posts by type
