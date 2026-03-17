@@ -6,6 +6,8 @@ import styles from "@/styles/css/pages/page.module.css";
 export default async function Home() {
   const { posts, totalPosts } = await getAllPosts(1, 20);
 
+  console.log("Fetched posts:", posts);
+
   return (
     <div className={styles.page}>
       <main className={styles.main} id="main-content">
