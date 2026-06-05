@@ -1,4 +1,4 @@
-import Link from "next/link";
+import TransitionLink from '@/components/TransitionLink';
 import { NavPost } from "@/sanity/fetch";
 import styles from "@/styles/css/components/nextArticle.module.css";
 
@@ -13,13 +13,13 @@ export default function NextArticle({ post }: NextArticleProps) {
     <div className={styles.nextArticle}>
       <div className={styles.container}>
         <span className={styles.label}>Next Article</span>
-        <Link href={`/post/${post.slug}`} className={styles.link}>
+        <TransitionLink href={`/post/${post.slug}`} className={styles.link}>
           <h3 className={styles.title}>{post.title}</h3>
           <span className={styles.readMore}>
             Read Next
             <span className={styles.arrow}>→</span>
           </span>
-        </Link>
+        </TransitionLink>
       </div>
     </div>
   );

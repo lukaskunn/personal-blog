@@ -1,6 +1,6 @@
 import styles from '@/styles/css/pages/not-found.module.css';
 import BackgroundGrid from '@/components/BackgroundGrid';
-import Link from 'next/link';
+import TransitionLink from '@/components/TransitionLink';
 
 export default function NotFound() {
   return (
@@ -23,7 +23,7 @@ export default function NotFound() {
             never existed in this dimension.
           </p>
 
-          <Link
+          <TransitionLink
             className={styles['return-button']}
             href='/'
             aria-label="Return to home page"
@@ -32,7 +32,7 @@ export default function NotFound() {
             <span className={styles['button-arrow']} aria-hidden="true">
               →
             </span>
-          </Link>
+          </TransitionLink>
         </div>
 
         <div className={styles["error-code-container"]}>

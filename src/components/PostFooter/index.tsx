@@ -1,4 +1,4 @@
-import Link from "next/link";
+import TransitionLink from '@/components/TransitionLink';
 import styles from "@/styles/css/components/postFooter.module.css";
 
 const socialLinks = [
@@ -34,7 +34,7 @@ export default function PostFooter({ email = "lucasoliveira098@gmail.com" }: Pos
       <div className={styles.bottom}>
         <nav className={styles.socialNav}>
           {socialLinks.map((link) => (
-            <Link
+            <TransitionLink
               key={link.name}
               href={link.href}
               className={styles.socialLink}
@@ -42,7 +42,7 @@ export default function PostFooter({ email = "lucasoliveira098@gmail.com" }: Pos
               rel="noopener noreferrer"
             >
               [ {link.name} ]
-            </Link>
+            </TransitionLink>
           ))}
         </nav>
 

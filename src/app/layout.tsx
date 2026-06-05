@@ -5,6 +5,8 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import "@/styles/css/globals.css";
+import { PageTransitionProvider } from "@/components/PageTransition";
+import LoadingScreen from "@/components/LoadingScreen";
 
 const gloockFont = localFont({
   variable: "--font-gloock",
@@ -70,9 +72,12 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${gloockFont.variable} ${aksharFont.variable} ${robotoMonoFont.variable} ${robotoFont.variable}`}>
       <body>
-        <Header />
-        {children}
-        <Footer />
+        <PageTransitionProvider>
+          <LoadingScreen />
+          <Header />
+          {children}
+          <Footer />
+        </PageTransitionProvider>
         <SpeedInsights />
       </body>
     </html>
