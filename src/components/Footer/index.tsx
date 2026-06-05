@@ -1,4 +1,4 @@
-import Link from "next/link";
+import TransitionLink from '@/components/TransitionLink';
 import styles from "@/styles/css/components/footer.module.css";
 
 const socialLinks = [
@@ -20,7 +20,7 @@ export default function Footer() {
 
         <nav className={styles.socialNav}>
           {socialLinks.map((link) => (
-            <Link
+            <TransitionLink
               key={link.name}
               href={link.href}
               className={styles.socialLink}
@@ -28,11 +28,11 @@ export default function Footer() {
               rel="noopener noreferrer"
             >
               {link.name}
-            </Link>
+            </TransitionLink>
           ))}
-          <Link href="https://lucasoliveira.io/contact" className={styles.contactLink}>
+          <TransitionLink href="https://lucasoliveira.io/contact" className={styles.contactLink}>
             Contact
-          </Link>
+          </TransitionLink>
         </nav>
       </div>
     </footer>

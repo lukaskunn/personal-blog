@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import TransitionLink from '@/components/TransitionLink';
 import styles from "@/styles/css/components/postPageHeader.module.css";
 
 const navLinks = [
@@ -14,22 +14,22 @@ export default function PostPageHeader() {
   return (
     <header className={styles.header}>
       <div className={styles.container}>
-        <Link href="/" className={styles.logo}>
+        <TransitionLink href="/" className={styles.logo}>
           Lucas Oliveira
-        </Link>
+        </TransitionLink>
 
         <nav className={styles.nav}>
           {navLinks.map((link) => (
-            <Link key={link.href} href={link.href} className={styles.navLink}>
+            <TransitionLink key={link.href} href={link.href} className={styles.navLink}>
               [ {link.label} ]
-            </Link>
+            </TransitionLink>
           ))}
         </nav>
 
-        <Link href="https://lucasoliveira.io/contact" className={styles.contactLink}>
+        <TransitionLink href="https://lucasoliveira.io/contact" className={styles.contactLink}>
           Contact Me
           <span className={styles.arrow}>↗</span>
-        </Link>
+        </TransitionLink>
       </div>
     </header>
   );

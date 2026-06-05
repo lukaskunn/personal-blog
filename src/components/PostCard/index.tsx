@@ -1,4 +1,4 @@
-import Link from "next/link";
+import TransitionLink from '@/components/TransitionLink';
 import { Post } from "@/types/sanity-queries";
 import styles from "@/styles/css/components/postCard.module.css";
 
@@ -38,7 +38,7 @@ export default function PostCard({ post, index }: PostCardProps) {
       className={styles.card}
       style={{ animationDelay: `${index * 0.1}s` }}
     >
-      <Link href={`/post/${post.slug}`} className={styles.link}>
+      <TransitionLink href={`/post/${post.slug}`} className={styles.link}>
         <div className={styles.meta}>
           <span className={styles.index}>{formattedIndex}</span>
           <span className={styles.separator}>/</span>
@@ -59,7 +59,7 @@ export default function PostCard({ post, index }: PostCardProps) {
         <div className={styles.arrowWrapper}>
           <span className={styles.arrow}>↗</span>
         </div>
-      </Link>
+      </TransitionLink>
     </article>
   );
 }
