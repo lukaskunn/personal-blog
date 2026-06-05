@@ -6,8 +6,8 @@ interface HeroProps {
 }
 
 export default function Hero({
-  title = "Welcome to my blog",
-  subtitle = "Im Lucas Oliveira, a <strong>Creative developer and software Engineer</strong>. Here im exploring the intersection of creative development, design systems, and the future of web interfaces.",
+  title = "Notes on creative front-end",
+  subtitle = "Writing on engineering, animation, and <strong>creative development</strong>.",
 }: HeroProps) {
   return (
     <section className={styles.hero}>
