@@ -7,7 +7,7 @@
 // ============================================
 
 // Base Colors
-$background-color-main: #E5E5DD;
+$background-color-main: #f5f5f5;
 $background-color-dark: #1c1c1c;
 $background-color-overlay: #292929;
 $primary-color: #000000;
@@ -18,7 +18,7 @@ $error-color: #e74c3c;
 $success-color: #27ae60;
 
 // Utility Colors
-$color-transparent-bg: rgba(229, 229, 221, 0); // #e5e5dd00
+$color-transparent-bg: #f5f5f500; // #e5e5dd00
 
 // Alpha Variations (for borders, shadows, overlays)
 $alpha-10: rgba(0, 0, 0, 0.1);
